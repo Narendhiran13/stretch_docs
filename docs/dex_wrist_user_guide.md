@@ -182,7 +182,9 @@ If your robot requires a Wacc Board upgrade please follow the [instructions here
 
 ### Attaching the Dex Wrist
 
-The Dex Wrist mounts to the bottom of the [Stretch Wrist Tool Plate](https://docs.hello-robot.com/hardware_user_guide/#wrist-tool-plate)  requires
+Power down your Stretch before installing the Dex Wrist.
+
+The Dex Wrist mounts to the bottom of the [Stretch Wrist Tool Plate](https://docs.hello-robot.com/hardware_user_guide/#wrist-tool-plate). Installation requires
 
 * 8 [M2x6mm Torx FHCS bolts](https://www.mcmaster.com/90236A104/) (provided)
 * 4 [M2.5x4mm Torx FHCS bolts](https://www.mcmaster.com/92703A448/) (provided)
@@ -199,7 +201,7 @@ Note where the forward direction is on the wrist yaw tool plate. The forward dir
 
 ![](./images/dex_wrist_C_rs.png)
 
-Using the T6 Torx wrench, attach the wrist mount bracket to the bottom of the tool plate using the provided  M2x6mm bolts. 
+Using the T6 Torx wrench, attach the wrist mount bracket (A) to the bottom of the tool plate using the provided  M2x6mm bolts (B). 
 
 **NOTE: ensure that the forward direction of the bracket (also indicated by an alignment hole) matches the forward direction of the tool plate.**
 
@@ -209,31 +211,31 @@ Using the T6 Torx wrench, attach the wrist mount bracket to the bottom of the to
 
 Now route the Dynamixel cable coming from the Stretch Wrist Yaw through the hollow bore of the wrist yaw joint.
 
-Next, raise the wrist module up vertically into the mounting bracket, then sliding it over horizontally so that the bearing mates onto its post.  
+ 
 
 **NOTE: During this step ensure the Dynamixel cable from the wrist yaw exits out the back (towards the shoulder)**
 
 
-
+Next, raise the wrist module up vertically into the mounting bracket
 
 
 ![![]](./images/dex_wrist_roll_install_rs.png)
 
 
-
+, then sliding it over horizontally so that the bearing mates onto its post. 
 
 
 ![![]](./images/dex_wrist_roll_install2_rs.png)
 
 
 
-Now rotate the wrist yaw joint so the wrist pitch servo body is accessible. Attach the pitch servo to the mounting bracket using the 4 M2.5x4mm screws at T8 Torx wrench.
+Now rotate the wrist yaw joint so the wrist pitch servo body is accessible. Attach the pitch servo to the mounting bracket using the 4 M2.5x4mm screws (C) using the T8 Torx wrench.
 
 
 
 ![](./images/dex_wrist_pitch_bracket_attach_rs.png)
 
-Finally, plug route the Dynamixel cable into the wrist pitch servo (pink) and install the cable clip using the M2.5x8mm bolts and the 2mm hex wrench.
+Finally, route the Dynamixel cable into the wrist pitch servo (pink) and install the cable clip (D) using the M2.5x8mm bolts and the 2mm hex wrench.
 
  ![](./images/dex_wrist_cable_route_rs.png)
 
