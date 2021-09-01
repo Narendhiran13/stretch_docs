@@ -303,7 +303,7 @@ robot:
   tool: tool_stretch_dex_wrist
 
 tool_none:
-  baud: 11520
+  baud: 115200
 tool_stretch_gripper:
   baud: 115200
 
