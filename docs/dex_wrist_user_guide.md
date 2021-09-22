@@ -255,127 +255,23 @@ Ensure the latest version of Stretch Body and Stretch Factory are installed
 >>$ pip2 install hello-robot-stretch-factory -U --no-cache-dir
 >>$ pip2 install hello-robot-stretch-tool-share -U --no-cache-dir
 ```
-
-#### Update Servo Baud Rates
-
-If your robot's batch requires a baud rate update:
+#### Backup User YAML
+```bash
+>>$ cd $HELLO_FLEET_PATH/$HELLO_FLEET_ID
+>>$ cp stretch_re1_user_params.yaml stretch_re1_user_params.yaml.bak
+```
+#### Run Installation Script
 
 ```bash
->>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 11 115200
----------------------
-Checking servo current baud for 57600
-----
-Identified current baud of 57600. Changing baud to 115200
-Success at changing baud
-
->>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 12 115200
----------------------
-Checking servo current baud for 57600
-----
-Identified current baud of 57600. Changing baud to 115200
-Success at changing baud
-
->>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
----------------------
-Checking servo current baud for 57600
-----
-Identified current baud of 57600. Changing baud to 115200
-Success at changing baud
-```
-
-#### Configure User YAML
-
-The Dex Wrist requires a number of updates to the robot user YAML
-
-YAML doesn't allow definition of multiple fields with the same name. Depending on what is already listed in your user YAML you will need to manually merge fields. 
-
-Merge the new following additions to you your  `~/stretch_user/$HELLO_FLEET_ID/stretch_re1_user_params.yaml`
-
-```yaml
-
-factory_params: stretch_re1_factory_params.yaml
-
-params:
-  - stretch_tool_share.stretch_dex_wrist.params
-
-robot:
-  use_collision_manager: 1
-  tool: tool_stretch_dex_wrist
-
-tool_none:
-  baud: 115200
-tool_stretch_gripper:
-  baud: 115200
-
-head:
-  baud: 115200
-wrist_yaw:
-  baud: 115200
-head_tilt:
-  baud: 115200
-head_pan:
-  baud: 115200
-
-stretch_gripper:
-  range_t:
-    - 0
-    - 6415
-  zero_t: 4017
-  baud: 115200
-
-lift:
-  i_feedforward: 0.75
-
-hello-motor-lift:
-  gains:
-    i_safety_feedforward: 0.75
-
-```
-Note: The factory gripper calibration may not provide the full range of motion in some cases. If necessary you can dial in the gripper calibration with the tool `./RE1_gripper_calibrate.py`
-#### Configure for use in ROS
-
-First pull down the Dex Wrist branch of Stretch ROS, Stretch Tool Share, and copy in the URDF data:
-
-```bash
->>$ cd ~/catkin_ws/src/stretch_ros/
->>$ git checkout feature/pluggable_end_effector
->>$ git pull
-
 >>$ cd ~/repos
->>$ git clone https://github.com/hello-robot/stretch_tool_share
->>$ cd stretch_tool_share/tool_share/stretch_dex_wrist/stretch_description
->>$ cp urdf/stretch_dex_wrist.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf
->>$ cp meshes/*.STL ~/catkin_ws/src/stretch_ros/stretch_description/meshes
-```
+>>$ git clone https://github.com/hello-robot/stretch_install
+>>$ cd stretch_install/factory
+>>$ ./stretch_install_dex_wrist.sh
+````
 
-Now configure `stretch_description.xacro` to use the Dex Wrist:
 
-```bash
->>$ nano ~/catkin_ws/src/stretch_ros/stretch_description/urdf/stretch_description.xacro
-```
 
- and edit to read,
+Note: The factory gripper calibration may not provide the full range of motion in some cases. If necessary you can dial in the gripper calibration with the tool `./RE1_gripper_calibrate.py`
 
-```bash
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="stretch_description">
-  <xacro:include filename="stretch_dex_wrist.xacro" />
-  <xacro:include filename="stretch_main.xacro" />
-  <xacro:include filename="stretch_aruco.xacro" />
-  <xacro:include filename="stretch_d435i.xacro" />
-  <xacro:include filename="stretch_laser_range_finder.xacro" />
-  <xacro:include filename="stretch_respeaker.xacro" />
-</robot>
-```
-
-Update your URDF and then export the URDF for Stretch Body to use  (you may need to Ctrl-C to exit `rosrun`)
-
-```bash
->>$ rosrun stretch_calibration update_urdf_after_xacro_change.sh
->>$ cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
->>$ ./export_urdf.sh
-```
-
-## 
 
 .<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
