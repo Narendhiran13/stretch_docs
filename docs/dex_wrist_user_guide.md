@@ -182,6 +182,8 @@ If your robot requires a Wacc Board upgrade please follow the [instructions here
 
 ### Attaching the Dex Wrist
 
+![](./images/dex_wrist_install.png)
+
 Power down your Stretch before installing the Dex Wrist.
 
 The Dex Wrist mounts to the bottom of the [Stretch Wrist Tool Plate](https://docs.hello-robot.com/hardware_user_guide/#wrist-tool-plate). Installation requires
@@ -239,7 +241,7 @@ Finally, route the Dynamixel cable into the wrist pitch servo (pink) and install
 
  ![](./images/dex_wrist_cable_route_rs.png)
 
-
+ ![](./images/dex_wrist_cable_detail.png)
 
 ### Software Configuration
 
