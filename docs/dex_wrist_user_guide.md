@@ -60,7 +60,7 @@ The Dex Wrist can be teleoperated using the XBox controller. When the Dex Wrist 
 >>$ stretch_xbox_controller_teleop.py
 ```
 
-The new key mapping is shown below. A printable version is available [here](stretch_re1_dex_wrist_teleop_guide.pdf).
+The new key mapping is shown below. A printable version is available [here](./images/stretch_re1_dex_wrist_teleop_guide.pdf).
 
 ![](./images/stretch_re1_dex_wrist_teleop_guide.png)
 
