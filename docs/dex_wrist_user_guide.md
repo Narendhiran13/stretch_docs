@@ -62,7 +62,7 @@ The Dex Wrist can be teleoperated using the XBox controller. When the Dex Wrist 
 
 The new key mapping is shown below. A printable version is available [here](stretch_re1_dex_wrist_teleop_guide.pdf).
 
-![](/home/hello-robot/repos/stretch_docs/docs/images/stretch_re1_dex_wrist_teleop_guide.png)
+![](./images/stretch_re1_dex_wrist_teleop_guide.png)
 
 ### Stretch Body Interface
 
