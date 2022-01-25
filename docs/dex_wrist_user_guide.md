@@ -269,11 +269,11 @@ Ensure the latest version of Stretch Body and Stretch Factory are installed
 >>$ git clone https://github.com/hello-robot/stretch_install
 >>$ cd stretch_install/factory
 >>$ ./stretch_install_dex_wrist.sh
-````
+```
 
 
 
 Note: The factory gripper calibration may not provide the full range of motion in some cases. If necessary you can dial in the gripper calibration with the tool `./RE1_gripper_calibrate.py`
 
-
-.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+------
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
