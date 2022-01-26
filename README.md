@@ -5,7 +5,7 @@ This repository generates the documentation hosted at [docs.hello-robot.com](htt
 ## Setup
 
 ```
-python3 -m pip install mkdocs mkdocs-material mktheapidocs
+python3 -m pip install mkdocs mkdocs-material mkdocstrings pytkdocs[numpy-style]
 ```
 
 ## Development
