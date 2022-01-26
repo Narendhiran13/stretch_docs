@@ -46,6 +46,7 @@
 | Resource                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Stretch Body Guide](stretch_body_guide.md)                  | Guide to the low level Python interface to the Stretch hardware |
+| [Stretch Body API Reference](stretch_body_api.md)            | API reference for the Stretch Body python module.            |
 | [Stretch Firmware Guide](https://github.com/hello-robot/stretch_firmware/blob/master/README.md) | Guide to updating the Stretch Firmware                       |
 | [Stretch Installation Guide](https://github.com/hello-robot/stretch_install/blob/master/README.md) | Guide to installing a new user and managing the Stretch installation |
 | [Stretch Factory Tools](https://github.com/hello-robot/stretch_factory/blob/master/README.md) | Guide to factory tools for hardware calibration and introspection |

@@ -3,9 +3,8 @@ site_url: https://docs.hello-robot.com
 site_description: "Hello Robot User Documentation"
 #repo_name: "github.com/hello-robot"
 #repo_url: https://github.com/hello-robot
-
+copyright: 'Copyright &copy; 2022 Hello Robot Inc'
 use_directory_urls: True
-copyright: 'Copyright &copy; 2021 Hello Robot Inc'
 
 theme:
  font: Arial
@@ -25,13 +24,17 @@ theme:
  favicon: images/hello_robot_favicon.png
 extra_css:
   - extra.css
+
 plugins:
   - search
+  - mkdocstrings
 
 extra:
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/HelloRobotInc
+    - icon: fontawesome/brands/github
+      link: https://github.com/hello-robot
 
 nav:
  - Home: README.md
@@ -39,7 +42,3 @@ nav:
    - Stretch Forum: "https://forum.hello-robot.com/"
    - Stretch GitHub: "https://github.com/hello-robot"
    - Stretch Videos: "https://youtube.com/c/HelloRobot"
-edit_uri: ''
-
-
-
