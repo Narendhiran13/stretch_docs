@@ -1,6 +1,6 @@
 # Stretch RE1: Dex Wrist User Guide
 
-In this guide we will cover the installation, configuration, and use of the Stretch Dex Wrist.
+In this guide, we will cover the installation, configuration, and use of the Stretch Dex Wrist.
 
 ## Overview
 
@@ -20,7 +20,7 @@ The Stretch Dex Wrist is an optional add-on to the RE1. It adds pitch and roll d
 
 The Dex Wrist requires added attention to safety. Its additional dexterity introduces new pinch points around the wrist pitch and roll degrees of freedom.
 
-NOTE: Please review the [Robot Safety Guide](https://docs.hello-robot.com/robot_safety_guide/) prior to working with the Dex Wrist. 
+**NOTE:** Please review the [Robot Safety Guide](https://docs.hello-robot.com/robot_safety_guide/) prior to working with the Dex Wrist.
 
 In addition to these precautions, the Dex Wrist requires attention to pinch points between:
 
@@ -112,42 +112,45 @@ The Dex Wrist can be controlled via ROS as well, as shown in the [keyboard teleo
 >>$ roslaunch stretch_calibration simple_test_head_calibration.launch
 ```
 
-You can type 'q' then Ctrl-C to exit when done. The menu interface is:
+You can use Ctrl-C to exit when done. The menu interface is:
 
-```bash
----------- KEYBOARD TELEOP MENU -----------|
-|                                           |
-|                 i HEAD UP                 |
-|     j HEAD LEFT          l HEAD RIGHT     |
-|                , HEAD DOWN                |
-|                                           |
-|                                           |
-|  7 BASE ROTATE LEFT   9 BASE ROTATE RIGHT |
-|         home                page-up       |
-|                                           |
-|                                           |
-|                 8 LIFT UP                 |
-|                 up-arrow                  |
-|    4 BASE FORWARD         6 BASE BACK     |
-|      left-arrow           right-arrow     |
-|                2 LIFT DOWN                |
-|                down-arrow                 |
-|                                           |
-|                                           |
-|                 w ARM OUT                 |
-|   a WRIST FORWARD        d WRIST BACK     |
-|                 x ARM IN                  |
-|                                           |
-|                                           |
-|   c PITCH FORWARD        v PITCH BACK     |
-|    o ROLL FORWARD         p ROLL BACK     |
-|              5 GRIPPER CLOSE              |
-|              0 GRIPPER OPEN               |
-|                                           |
-|   step size:  b BIG, m MEDIUM, s SMALL    |
-|                  q QUIT                   |
-|                                           |
-|-------------------------------------------|
+```
+---------- KEYBOARD TELEOP MENU -----------
+                                           
+              i HEAD UP                    
+ j HEAD LEFT            l HEAD RIGHT       
+              , HEAD DOWN                  
+                                           
+                                           
+ 7 BASE ROTATE LEFT     9 BASE ROTATE RIGHT
+ home                   page-up            
+                                           
+                                           
+              8 LIFT UP                    
+              up-arrow                     
+ 4 BASE FORWARD         6 BASE BACK        
+ left-arrow             right-arrow        
+              2 LIFT DOWN                  
+              down-arrow                   
+                                           
+                                           
+              w ARM OUT                    
+ a WRIST FORWARD        d WRIST BACK       
+              x ARM IN                     
+                                           
+                                           
+ c PITCH FORWARD        v PITCH BACK       
+ o ROLL FORWARD         p ROLL BACK        
+                                           
+                                           
+              5 GRIPPER CLOSE              
+              0 GRIPPER OPEN               
+                                           
+  step size:  b BIG, m MEDIUM, s SMALL     
+                                           
+              q QUIT                       
+                                           
+-------------------------------------------
 ```
 
 
@@ -168,17 +171,46 @@ Earlier production 'batches' of Stretch will require a hardware upgrade prior to
 >>$ stretch_about.py
 ```
 
-, and note the listed Batch Name.
+Refer to this table to determine what changes are required for your robot.
 
 | Batch Name        | Upgrade Wacc Board | Update Baud Rate |
 | ----------------- | ------------------ | ---------------- |
 | Guthrie           | Y                  | Y                |
-| Irma              | Y                  | Y                |
 | Hank              | Y                  | Y                |
+| Irma              | Y                  | Y                |
 | Joplin            | N                  | Y                |
 | Kendrick or later | N                  | N                |
 
+#### Upgrade Wacc Board
+
 If your robot requires a Wacc Board upgrade please follow the [instructions here](https://github.com/hello-robot/stretch_factory/tree/master/updates/013_WACC_INSTALL) with the assistance of Hello Robot support. This must be done before attaching the Dex Wrist to our robot.
+
+#### Update Baud Rate
+
+The new wrist requires moving to 115200 Baud communication for all Dynamixel servos from the previous 57600. Use the commands below.
+
+```bash
+>>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 11 115200
+---------------------
+Checking servo current baud for 57600
+----
+Identified current baud of 57600. Changing baud to 115200
+Success at changing baud
+
+>>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 12 115200
+---------------------
+Checking servo current baud for 57600
+----
+Identified current baud of 57600. Changing baud to 115200
+Success at changing baud
+
+>>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
+---------------------
+Checking servo current baud for 57600
+----
+Identified current baud of 57600. Changing baud to 115200
+Success at changing baud
+```
 
 ### Attaching the Dex Wrist
 
@@ -247,6 +279,8 @@ Finally, route the Dynamixel cable into the wrist pitch servo (pink) and install
 
 Robots that did not ship with the Dex Wrist pre-installed will require their software to be updated and configured.
 
+**NOTE:** Each user account on the robot will need to run the following steps to configure the Dex Wrist.
+
 #### Upgrade Stretch Body
 
 Ensure the latest version of Stretch Body and Stretch Factory are installed
@@ -267,13 +301,12 @@ Ensure the latest version of Stretch Body and Stretch Factory are installed
 ```bash
 >>$ cd ~/repos
 >>$ git clone https://github.com/hello-robot/stretch_install
->>$ cd stretch_install/factory
->>$ ./stretch_install_dex_wrist.sh
+>>$ cd ./stretch_install
+>>$ git pull
+>>$ ./factory/stretch_install_dex_wrist.sh
 ```
 
-
-
-Note: The factory gripper calibration may not provide the full range of motion in some cases. If necessary you can dial in the gripper calibration with the tool `./RE1_gripper_calibrate.py`
+**NOTE:** The factory gripper calibration may not provide the full range of motion in some cases. If necessary you can dial in the gripper calibration with the tool `RE1_gripper_calibrate.py`
 
 ------
 <div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
