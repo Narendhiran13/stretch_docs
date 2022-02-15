@@ -15,14 +15,14 @@ This is the recommended approach if you are running Windows or MacOS. This metho
 
 While the Stretch RE1 is tethered to the monitor, keyboard, and mouse setup, first verify that the robot is connected to the wireless network then install Vino VNC server using the following command:
 
-```bash
-sudo apt install vino
+```console
+$ sudo apt install vino
 ```
 
 Go to System Settings. Select the Sharing tab and turn it on then, turn on Screen Sharing and choose a password. If you plan to connect to the robot from a Windows or MacOS machine, then open a terminal and run the following command.
 
-```bash
-sudo gsettings set org.gnome.Vino require-encryption false
+```console
+$ sudo gsettings set org.gnome.Vino require-encryption false
 ```
 
 Finally, we need the robot's IP address, username, and password. Open a terminal and run `ifconfig`, which will print out the network information of the machine. In the wireless section (typically named wlp2s0), look for something that looks like "inet 10.0.0.15". The four numbers represent the IP address of the robot on the local network. The robot's default username and password is printed on papers that came in the tools box alongside the robot.
@@ -43,8 +43,8 @@ The first step is to identify the robot's IP address on the local network. While
 
 To SSH into the robot, run the following. It will require the password and may ask you to add the robot to the known hosts.
 
-```bash
-ssh -X username@ip-address
+```console
+$ ssh -X username@ip-address
 ```
 
 Now that you're SSH-ed into the robot, you can disconnect any wires from the robot. You can accomplish any of the same tasks through the terminal. For example, you can type in `ipython` and interact with the robot using Stretch Body, as explained in the [Getting Started Guide](quick_start_guide.md#start-coding).
@@ -56,13 +56,13 @@ Furthermore, Windowed GUI applications that would have displayed on the monitor 
 It's common to need to move files to/from the robot wirelessly and a tool similar to SSH can help with this: Secure Copy (SCP).
 
 To send the files from your computer to the robot, run:
-```bash
-scp ./filename username@ip-address:~/path/to/put/it/
+```console
+$ scp ./filename username@ip-address:~/path/to/put/it/
 ```
 
 To copy the files from the robot to your computer, run the reverse:
-```bash
-scp username@ip-address:/path/to/filename ~/path/to/put/it/
+```console
+$ scp username@ip-address:/path/to/filename ~/path/to/put/it/
 ```
 
 This works for [copying directories](https://stackoverflow.com/a/11304926/4753010) and their contents as well.
@@ -81,16 +81,16 @@ First, identify your robot's and computer's IP address on the network (e.g. usin
 
 Next, run the following on the robot:
 
-```bash
-export ROS_IP=robot-ip-address
-export ROS_MASTER_URI=http://robot-ip-address:11311/
+```console
+$ export ROS_IP=robot-ip-address
+$ export ROS_MASTER_URI=http://robot-ip-address:11311/
 ```
 
 Next, start the ROS launch files on the robot as you normally would. Finally, on your computer, run:
 
-```bash
-export ROS_IP=computer-ip-address
-export ROS_MASTER_URI=http://robot-ip-address:11311
+```console
+$ export ROS_IP=computer-ip-address
+$ export ROS_MASTER_URI=http://robot-ip-address:11311
 ```
 
 If you use ROS Remote Master often, you can export these environment variables in your [bashrc](https://www.maketecheasier.com/what-is-bashrc/).
@@ -127,14 +127,17 @@ The method of SSH described in [SSH & X Server](#ssh-x-server) uses basic passwo
 
 The first step is to generate public and private keys on your computer. Linux and MacOS machines can simply open the terminal and run:
 
-```bash
-ssh-keygen
+```console
+$ ssh-keygen
 ```
 
 It will prompt you to enter a password. If you do, you'll need it to use the private key when you SSH into the robot. Next, we give the robot the public key. Linux and MacOS machines can run:
 
-```bash
-ssh-copy-id username@ip-address
+```console
+$ ssh-copy-id username@ip-address
 ```
 
 This requires you to know the username and ip-address of the robot. Instructions on how to find this information is found in the [SSH & X Server](#ssh-x-server) section. You may now SSH into the robot as normal, and no prompt for the robot's password will appear.
+
+------
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>

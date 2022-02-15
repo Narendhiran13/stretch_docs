@@ -56,8 +56,8 @@ robot:
 
 The Dex Wrist can be teleoperated using the XBox controller. When the Dex Wrist is installed the `stretch_xbox_controller_teleop.py` tool will automatically remap control of the pan-tilt head to control of the pitch-roll wrist.
 
-```bash
->>$ stretch_xbox_controller_teleop.py
+```console
+$ stretch_xbox_controller_teleop.py
 ```
 
 The new key mapping is shown below. A printable version is available [here](./images/stretch_re1_dex_wrist_teleop_guide.pdf).
@@ -96,10 +96,10 @@ robot.stop()
 
 You can jog the individual joints of the wrist with the Stretch Body interface using the [`stretch_dex_wrist_jog.py`](https://github.com/hello-robot/stretch_tool_share/blob/feature/master/python/bin/stretch_dex_wrist_jog.py) tool that installs with the Stretch Tool Share:
 
-```bash
->>$ stretch_dex_wrist_jog.py --pitch
->>$ stretch_dex_wrist_jog.py --yaw
->>$ stretch_dex_wrist_jog.py --roll
+```console
+$ stretch_dex_wrist_jog.py --pitch
+$ stretch_dex_wrist_jog.py --yaw
+$ stretch_dex_wrist_jog.py --roll
 ```
 
 For reference, the parameters for the Stretch Dex Wrist (which can be overridden in the user YAML) can be seen in  [params.py](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/stretch_dex_wrist_beta/params.py).
@@ -108,8 +108,8 @@ For reference, the parameters for the Stretch Dex Wrist (which can be overridden
 
 The Dex Wrist can be controlled via ROS as well, as shown in the [keyboard teleoperation code](https://github.com/hello-robot/stretch_ros/blob/master/stretch_core/nodes/keyboard_teleop). To test the interface:
 
-```bash
->>$ roslaunch stretch_calibration simple_test_head_calibration.launch
+```console
+$ roslaunch stretch_calibration simple_test_head_calibration.launch
 ```
 
 You can use Ctrl-C to exit when done. The menu interface is:
@@ -167,8 +167,8 @@ Robots that did not ship with the Dex Wrist installed will require additional ha
 
 Earlier production 'batches' of Stretch will require a hardware upgrade prior to use the Dex Wrist. To check your robot's batch, run:
 
-```bash
->>$ stretch_about.py
+```console
+$ stretch_about.py
 ```
 
 Refer to this table to determine what changes are required for your robot.
@@ -189,22 +189,22 @@ If your robot requires a Wacc Board upgrade please follow the [instructions here
 
 The new wrist requires moving to 115200 Baud communication for all Dynamixel servos from the previous 57600. Use the commands below.
 
-```bash
->>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 11 115200
+```console
+$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 11 115200
 ---------------------
 Checking servo current baud for 57600
 ----
 Identified current baud of 57600. Changing baud to 115200
 Success at changing baud
 
->>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 12 115200
+$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-head 12 115200
 ---------------------
 Checking servo current baud for 57600
 ----
 Identified current baud of 57600. Changing baud to 115200
 Success at changing baud
 
->>$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
+$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
 ---------------------
 Checking servo current baud for 57600
 ----
@@ -285,25 +285,28 @@ Robots that did not ship with the Dex Wrist pre-installed will require their sof
 
 Ensure the latest version of Stretch Body and Stretch Factory are installed
 
-```bash
->>$ pip2 install hello-robot-stretch-body -U --no-cache-dir
->>$ pip2 install hello-robot-stretch-body-tools -U --no-cache-dir
->>$ pip2 install hello-robot-stretch-factory -U --no-cache-dir
->>$ pip2 install hello-robot-stretch-tool-share -U --no-cache-dir
+```console
+$ pip2 install hello-robot-stretch-body -U --no-cache-dir
+$ pip2 install hello-robot-stretch-body-tools -U --no-cache-dir
+$ pip2 install hello-robot-stretch-factory -U --no-cache-dir
+$ pip2 install hello-robot-stretch-tool-share -U --no-cache-dir
 ```
+
 #### Backup User YAML
-```bash
->>$ cd $HELLO_FLEET_PATH/$HELLO_FLEET_ID
->>$ cp stretch_re1_user_params.yaml stretch_re1_user_params.yaml.bak
+
+```console
+$ cd $HELLO_FLEET_PATH/$HELLO_FLEET_ID
+$ cp stretch_re1_user_params.yaml stretch_re1_user_params.yaml.bak
 ```
+
 #### Run Installation Script
 
-```bash
->>$ cd ~/repos
->>$ git clone https://github.com/hello-robot/stretch_install
->>$ cd ./stretch_install
->>$ git pull
->>$ ./factory/stretch_install_dex_wrist.sh
+```console
+$ cd ~/repos
+$ git clone https://github.com/hello-robot/stretch_install
+$ cd ./stretch_install
+$ git pull
+$ ./factory/stretch_install_dex_wrist.sh
 ```
 
 **NOTE:** The factory gripper calibration may not provide the full range of motion in some cases. If necessary you can dial in the gripper calibration with the tool `RE1_gripper_calibrate.py`

@@ -510,8 +510,8 @@ For longer trips it is recommended to transport the robot in its original cardbo
 
 It is useful to periodically run stretch_robot_system_check.py. This  will check that the robot's hardware devices are  present and within normal operating conditions. 
 
-```bash
->>$ stretch_robot_system_check.py
+```console
+$ stretch_robot_system_check.py
 
 ---- Checking Devices ----
 [Pass] : hello-wacc
@@ -582,10 +582,6 @@ Bus 002 Device 016: ID 8086:0b3a Intel Corp.
 
 ```
 
-------
-
-.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
-
 ## Regulatory Compliance
 
 The Stretch Research Edition 1 (Stretch RE1) is not certified for use as a consumer device in the U.S.
@@ -597,4 +593,4 @@ Per[ FCC 47 CFR, Part 15, Subpart B, section 15.103(c)](https://www.law.cornell.
 [OET BULLETIN NO. 62](https://transition.fcc.gov/bureaus/oet/info/documents/bulletins/oet62/oet62rev.pdf), titled "UNDERSTANDING THE FCC REGULATIONS FOR COMPUTERS AND OTHER DIGITAL DEVICES" from December 1993 provides further clarification of the Section 15.103(c) exemption: “*Test equipment* includes devices used for maintenance, research, evaluation, simulation and other analytical or scientific applications in areas such as industrial plants, public utilities, hospitals, universities, laboratories, automotive service centers and electronic repair shops.”
 
 ------
-.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>

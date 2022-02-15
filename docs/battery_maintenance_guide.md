@@ -154,8 +154,8 @@ A charged battery will typically report a voltage of 12-12.8V and will maintain 
 
 The battery voltage and current draw can be checked from the command line:
 
-```bash
->>$ stretch_robot_battery_check.py
+```console
+$ stretch_robot_battery_check.py
 [Pass] Voltage with 12.9889035225
 [Pass] Current with 2.46239192784
 [Pass] CPU Temp with 56.0
