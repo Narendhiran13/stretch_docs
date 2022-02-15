@@ -25,6 +25,11 @@ theme:
 extra_css:
   - extra.css
 
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+
 plugins:
   - search
   - mkdocstrings
