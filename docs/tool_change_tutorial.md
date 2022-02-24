@@ -19,11 +19,13 @@ robot:
   tool: tool_stretch_gripper
 ```
 
-We can interact with this tool from Python
+We can interact with this tool from iPython
 
 ```python
 In [1]: import stretch_body.robot as robot
+
 In [2]: r=robot.Robot()
+
 In [3]: r.startup()
 
 In [4]: r.end_of_arm
@@ -53,8 +55,11 @@ After updating the YAML we can interact with the ToolNone via iPython
 
 ```python
 In [1]: import stretch_body.robot as robot
+
 In [2]: r=robot.Robot()
+
 In [3]: r.startup()
+
 In [4]: r.end_of_arm
 Out[4]: <stretch_body.end_of_arm_tools.ToolNone instance at 0x7f245f786fa0>
 
@@ -66,16 +71,14 @@ In [6]: r.end_of_arm.stow()
 In [7]: r.stop()
 ```
 
-
-
 ## Loading Tool Interfaces from the Stretch Tool Share
 
 The [Stretch Tool Share](https://github.com/hello-robot/stretch_tool_share/) is an open Git repository for non-standard RE1 tools. It hosts the CAD, URDF, and Python files needed to integrate these tools onto your robot.
 
 To use Stretch Tool Share tools, first update your installation:
 
-```bash
-pip2 install hello-robot-stretch-tool-share
+```console
+$ pip2 install hello-robot-stretch-tool-share
 ```
 
 As an example, we see on the Tool Share that there is a tool, the [ToolDryEraseToolHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py) which [extends the EndOfArm](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/usbcam_wrist_v1/tool.py) class. In order to load this tool interface , modify your `stretch_re1_user_params.yaml` to load the tool as before. We will also need to tell it where to find the tool's [parameter file](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/params.py):
@@ -109,28 +112,28 @@ In [6]: r.end_of_arm.stow()
 
 # Changing Tool Interfaces in Stretch ROS
 
-Next we'll show how to change the ROS interface for a tool. Here we will continue with the [ToolDryEraseHolderV1]() example.  First, configure Stretch Body to use the tool as in the previous exercise. 
+Next we'll show how to change the ROS interface for a tool. Here we will continue with the [ToolDryEraseHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py#L3) example.  First, configure Stretch Body to use the tool as in the previous exercise.
 
 Next, ensure your ROS is up to date:
 
-```bash
->>$ cd ~/catkin_ws/src/stretch_ros/
->>$ git pull
+```console
+$ cd ~/catkin_ws/src/stretch_ros/
+$ git pull
 ```
 
-To access the URDF data for the [ToolDryEraseHolderV1]() we'll need to clone the Tool Share repository:
+To access the URDF data for the [ToolDryEraseHolderV1](https://github.com/hello-robot/stretch_tool_share/blob/master/python/stretch_tool_share/dry_erase_holder_v1/tool.py#L3) we'll need to clone the Tool Share repository:
 
-```bash
->>$ cd ~/repos
->>$ git clone https://github.com/hello-robot/stretch_tool_share
+```console
+$ cd ~/repos
+$ git clone https://github.com/hello-robot/stretch_tool_share
 ```
 
 Copy in the tool's URDF data into the Stretch ROS repository:
 
-```bash
->>$ cd ~/repos/stretch_tool_share/tool_share/dry_erase_holder_v1
->>$ cp stretch_description/urdf/*.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf/
->>$ cp stretch_description/meshes/*.STL ~/catkin_ws/src/stretch_ros/stretch_description/meshes/
+```console
+$ cd ~/repos/stretch_tool_share/tool_share/dry_erase_holder_v1
+$ cp stretch_description/urdf/*.xacro ~/catkin_ws/src/stretch_ros/stretch_description/urdf/
+$ cp stretch_description/meshes/*.STL ~/catkin_ws/src/stretch_ros/stretch_description/meshes/
 ```
 
 Now we will update the tool Xacro for Stretch. Open the file `~/catkin_ws/src/stretch_ros/stretch_description/urdf/stretch_description.xacro` in an editor. Comment out the current tool Xacro and include the Xacro for the dry erase holder.
@@ -152,16 +155,16 @@ Now we will update the tool Xacro for Stretch. Open the file `~/catkin_ws/src/st
 
 Finally, we'll update our already calibrated URDF to use this new tool:
 
-```bash
->>$ cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
->>$ cp stretch.urdf stretch.urdf.bak
->>$ rosrun stretch_calibration update_urdf_after_xacro_change.sh
+```console
+$ cd ~/catkin_ws/src/stretch_ros/stretch_description/urdf
+$ cp stretch.urdf stretch.urdf.bak
+$ rosrun stretch_calibration update_urdf_after_xacro_change.sh
 ```
 
 Ctrl-C when the `rosrun` command terminates and you're ready to visualize the tool in RViz:
 
-```bash
->>$ roslaunch stretch_calibration simple_test_head_calibration.launch
+```console
+$ roslaunch stretch_calibration simple_test_head_calibration.launch
 ```
 
 ![](./images/dry_erase_rviz.png)
@@ -174,9 +177,9 @@ For users looking to create their own custom tools it can be useful to understan
 
 ### Stretch Body
 
-The [Robot]() class expects an instance of EndOfArm tool to be present. The EndOfArm tool is an extension of the [DynamixelXChain](), which manages a chain of Dynamixel servos.
+The [Robot](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py#L97) class expects an instance of EndOfArm tool to be present. The EndOfArm tool is an extension of the [DynamixelXChain](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_X_chain.py#L16) class, which manages a chain of Dynamixel servos.
 
-A tool is defined via its parameters (either in user YAML or Python). For example, the ToolStretchGripper is defined in [robot_params.py](). These parameters tell the plug-in which [DynamixelHelloXL430](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py) instances to load and manage. Here we see:
+A tool is defined via its parameters (either in user YAML or Python). For example, the ToolStretchGripper is defined in [robot_params.py](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot_params.py). These parameters tell the plug-in which [DynamixelHelloXL430](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py) instances to load and manage. Here we see:
 
 ```python
 "tool_stretch_gripper": {
@@ -202,7 +205,7 @@ A tool is defined via its parameters (either in user YAML or Python). For exampl
 
 This dictionary defines a tool of class ToolStretchGripper with two [DynamixelHelloXL430](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/dynamixel_hello_XL430.py) devices on its bus (StretchGripper and WristYaw). 
 
-We see that the [ToolStretchGripper]() class extends the EndOfArm class and provides its own stowing behavior:
+We see that the [ToolStretchGripper](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/end_of_arm_tools.py#L7) class extends the EndOfArm class and provides its own stowing behavior:
 
 ```python
 class ToolStretchGripper(EndOfArm):
@@ -230,7 +233,6 @@ robot:
   #tool: tool_stretch_gripper
   #tool: tool_usbcam_wrist_v1
   #tool: tool_stretch_dex_wrist_beta
-
 ```
 
 For a more complex implementation of a tool we recommend reviewing the Stretch Dex Wrist implementation on the Stretch Tool Share. 
@@ -240,3 +242,6 @@ For a more complex implementation of a tool we recommend reviewing the Stretch D
 Stretch ROS also supports the tool plug-in architecture. Under ROS this is managed by extending the [SimpleCommandGroup](https://github.com/hello-robot/stretch_ros/blob/master/hello_helpers/src/hello_helpers/simple_command_group.py).
 
 More coming soon.
+
+------
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>

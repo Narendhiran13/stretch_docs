@@ -118,8 +118,8 @@ Python is the easiest way to begin writing code for the robot. This section will
 
 Stretch is configured to run the XBox Controller demo in the background at startup. To run your own code you'll need kill off this process so that it doesn't contend with your code.
 
-```bash
->> pkill -f stretch_xbox*
+```console
+$ pkill -f stretch_xbox*
 ```
 
 While you're at it, disable this autoboot feature. You can always turn it back on later. 
@@ -134,28 +134,27 @@ Search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xb
 
 Now open up a Terminal. From the command line, first verify that that all of the hardware is present and happy
 
-```
->> stretch_robot_system_check.py
+```console
+$ stretch_robot_system_check.py
 ```
 
 You may see a few joints reported in red because they haven't yet been calibrated. If so, home the robot
 
-```
->> stretch_robot_home.py
+```console
+$ stretch_robot_home.py
 ```
 
 Once the robot has homed, let's write some quick test code:
 
-```
->>ipython
+```console
+$ ipython
+Python 2.7.17 (default, Apr 15 2020, 17:20:14)
+...
 ```
 
 Now let's move the robot around using the Robot API. Try typing in these interactive commands at the iPython prompt:
 
 ```python
-Python 2.7.17 (default, Apr 15 2020, 17:20:14) 
-...
-
 import stretch_body.robot
 robot=stretch_body.robot.Robot()
 robot.startup()
@@ -193,8 +192,8 @@ robot.stop()
 
 Finally, we recommend that you change the login credentials for the default user, hello-robot. 
 
-```bash
->>$ sudo passwd hello-robot
+```console
+$ sudo passwd hello-robot
 ```
 
 If you'd like to setup a new user account, check out the [Stretch Installation Guide](https://github.com/hello-robot/stretch_install/blob/master/README.md). In a lab setting, it's useful for lab members to have their own user accounts to run experiments.
@@ -223,6 +222,5 @@ We recommend next exploring the ROS based demos that ship with Stretch.  These [
 
 That's it. Happy coding!
 
-
-
-.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+------
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>

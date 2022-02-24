@@ -1,13 +1,11 @@
 site_name: Hello Robot Documentation
 site_url: https://docs.hello-robot.com
 site_description: "Hello Robot User Documentation"
-#repo_name: "github.com/hello-robot"
-#repo_url: https://github.com/hello-robot
 copyright: 'Copyright &copy; 2022 Hello Robot Inc'
+site_author: Hello Robot Inc
 use_directory_urls: True
 
 theme:
- font: Arial
  name: material
  palette:
   - scheme: default
@@ -22,19 +20,41 @@ theme:
       name: Switch to light mode
  logo: images/hello_robot_logo_light.png
  favicon: images/hello_robot_favicon.png
+ features:
+  - navigation.instant
 extra_css:
   - extra.css
 
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - admonition
+
 plugins:
   - search
-  - mkdocstrings
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: numpy
+          rendering:
+            show_root_heading: true
+            show_source: false
+            members_order: source
+            heading_level: 3
 
 extra:
   social:
-    - icon: fontawesome/brands/twitter
+    - icon: material/home
+      link: https://hello-robot.com
+    - icon: material/twitter
       link: https://twitter.com/HelloRobotInc
-    - icon: fontawesome/brands/github
+    - icon: material/github
       link: https://github.com/hello-robot
+    - icon: material/linkedin
+      link: https://linkedin.com/company/hello-robot-inc
 
 nav:
  - Home: README.md

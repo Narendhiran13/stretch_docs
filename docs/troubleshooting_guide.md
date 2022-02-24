@@ -1,6 +1,6 @@
 # Stretch RE1: Troubleshooting Guide
 
-This guide covers common issues and ways to resolve them. Please check the [Hello Robot Forum](forum.hello-robot.com) for additional topics not covered here.
+This guide covers common issues and ways to resolve them. Please check the [Hello Robot Forum](https://forum.hello-robot.com) for additional topics not covered here.
 
 ## XBox teleoperation is not working 
 
@@ -44,7 +44,7 @@ IOError(None): None
 
 To check if a instance of [Robot](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/robot.py) is already instantiated, you may use the Unix [top](https://www.unixtutorial.org/commands/top) command to monitor active processes. You may use the Unix [pkill](https://linuxize.com/post/pkill-command-in-linux/) command to end the background instance of Robot.
 
-```
+```console
 $ pkill -9 python
 ```
 
@@ -52,8 +52,7 @@ As shipped, Stretch launches [stretch_xbox_controller_teleop.py](https://github.
 
 To turn it off, search for 'Startup' from Ubuntu Activities. Uncheck the box for 'hello_robot_xbox_teleop'.
 
-
 ![](./images/xbox_off_rs.png)
 
-
-
+------
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>

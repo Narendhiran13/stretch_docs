@@ -70,6 +70,6 @@ We provide ROS-related code for the Stretch RE1 mobile manipulator, including a 
 
 This documentation is only to be used for an authentic Stretch RE1 robot produced and sold by Hello Robot Inc. 
 
-All Hello Robot stretch_docs related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
+All Hello Robot [stretch_docs](https://github.com/hello-robot/stretch_docs) related materials are released under the [Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0) license.
 
 The Stretch RE1 has patents pending.

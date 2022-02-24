@@ -9,8 +9,8 @@ In this tutorial we will cover the basics required to work with Dynamixel servos
 
 Stretch comes with two Dynamixel buses - one for the head and one for the end-of-arm:
 
-```bash
-ls  /dev/hello-dynamixel-*
+```console
+$ ls  /dev/hello-dynamixel-*
 /dev/hello-dynamixel-head  /dev/hello-dynamixel-wrist
 ```
 
@@ -24,8 +24,8 @@ In some cases users will need to work directly with the servos from the command 
 
 You can directly command each servo using the command line tool `RE1_dynamixel_servo_jog.py`. This can be useful for debugging new servos added to the end-of-arm tool during system bring-up. For example, to command the head pan servo:
 
-```bash
-RE1_dynamixel_jog.py /dev/hello-dynamixel-head 11
+```console
+$ RE1_dynamixel_jog.py /dev/hello-dynamixel-head 11
 [Dynamixel ID:011] ping Succeeded. Dynamixel model number : 1080
 ------ MENU -------
 m: menu
@@ -47,15 +47,14 @@ i: set id
 d: disable torque
 e: enable torque
 -------------------
-
 ```
 
 ### Rebooting the Servos
 
 Under high-load conditions the servos may enter an error state to protect themselves from thermal overload. In this case, the red LED on the servo will flash (if visible). In addition, the servo will be unresponsive to motion commands. In this case, allow the overheating servo to cool down and reboot the servos using the `stretch_robot_dynamixel_reboot.py` tool: 
 
-```bash
-stretch_robot_dynamixel_reboot.py 
+```console
+$ stretch_robot_dynamixel_reboot.py
 For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 
 ---- Rebooting Head ---- 
@@ -70,8 +69,8 @@ For use with S T R E T C H (TM) RESEARCH EDITION from Hello Robot Inc.
 
 If it is unclear which servos are on the bus, and at what baud rate, you can use the `RE1_dynamixel_id_scan.py` tool. Here we see that the two head servos are at ID 11 and 12 at baud 57600.
 
-```bash
-RE1_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud 57600
+```console
+$ RE1_dynamixel_id_scan.py /dev/hello-dynamixel-head --baud 57600
 Scanning bus /dev/hello-dynamixel-head at baud rate 57600
 ----------------------------------------------------------
 [Dynamixel ID:000] ping Failed.
@@ -99,15 +98,14 @@ Scanning bus /dev/hello-dynamixel-head at baud rate 57600
 [Dynamixel ID:022] ping Failed.
 [Dynamixel ID:023] ping Failed.
 [Dynamixel ID:024] ping Failed.
-
 ```
 
 ### Setting the Servo Baud Rate
 
 Dynamixel servos come with baudrate=57600 from the factory.  When adding your own servos to the end-of-arm tool, you may want to set the servo ID using the `RE1_dynamixel_set_baud.py` tool. For example:
 
-```bash
-RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
+```console
+$ RE1_dynamixel_set_baud.py /dev/hello-dynamixel-wrist 13 115200
 ---------------------
 Checking servo current baud for 57600
 ----
@@ -119,19 +117,14 @@ Success at changing baud
 
 Dynamixel servos come with ID=1 from the factory. When adding your own servos to the end-of-arm tool, you may want to set the servo ID using the `RE1_dynamixel_id_change.py` tool. For example:
 
-```bash
-RE1_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13 --baud 115200
+```console
+$ RE1_dynamixel_id_change.py /dev/hello-dynamixel-wrist 1 13 --baud 115200
 [Dynamixel ID:001] ping Succeeded. Dynamixel model number : 1080
 Ready to change ID 1 to 13. Hit enter to continue:
 
 [Dynamixel ID:013] ping Succeeded. Dynamixel model number : 1080
 Success at setting ID to 13
-
 ```
 
-
-
-## 
-
 ------
-.<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>

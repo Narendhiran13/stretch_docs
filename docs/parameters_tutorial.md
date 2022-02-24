@@ -6,10 +6,10 @@ In this tutorial we will discuss how parameters are managed in Stretch Body and 
 
 ## Overview
 
-Stretch Body shares a global set of parameters across all of its Python [Devices](). A quick way to see what parameters are available are with the `stretch_params.py` tool:
+Stretch Body shares a global set of parameters across all of its Python Devices. A quick way to see what parameters are available are with the `stretch_params.py` tool:
 
-```bash
-stretch_params.py 
+```console
+$ stretch_params.py
 ################################### Parameters for stretch-re1-1039 ######################################
 Origin                                   Parameter                                     Value                        
 ----------------------------------------------------------------------------------------------------------
@@ -22,8 +22,8 @@ The tool display each parameter's value as well as which parameter file it was l
 
 By grepping the tool's output you can query specific settings. For example, to query contact thresholds for the arm:
 
-```bash
-stretch_params.py | grep arm | grep contact_thresh
+```console
+$ stretch_params.py | grep arm | grep contact_thresh
 stretch_re1_factory_params.yaml           param.arm.contact_thresh_max_N          [-100, 100]                   
 stretch_re1_factory_params.yaml           param.arm.contact_thresh_N              [-64.46241590881348, 66.51084520568847]
 ```
@@ -37,8 +37,8 @@ arm:
 
 Run the tool again and we see:
 
-```bash
-stretch_params.py | grep arm | grep contact_thresh
+```console
+$ stretch_params.py | grep arm | grep contact_thresh
 stretch_re1_factory_params.yaml           param.arm.contact_thresh_max_N          [-100, 100]                   
 stretch_re1_factory_params.yaml           param.arm.contact_thresh_N              [-80, 80]
 ```
@@ -70,8 +70,8 @@ You can configure which external parameters' data sources are loaded, and their 
 ```yaml
 factory_params: stretch_re1_factory_params.yaml
 params:
-- stretch_tool_share.usbcam_wrist_v1.params
-- stretch_tool_share.stretch_dex_wrist_beta.params
+ - stretch_tool_share.usbcam_wrist_v1.params
+ - stretch_tool_share.stretch_dex_wrist_beta.params
 ```
 
 Here we see that the name of the factory parameters file is `stretch_re1_factory_params.yaml`. We also see that two external parameter sets will be loaded. In this example, the order of parameter precedence  would be:
@@ -84,7 +84,7 @@ Here we see that the name of the factory parameters file is `stretch_re1_factory
 
 ## Working with Parameters Programmatically
 
-Stretch Body is organized as a set of classes that extend the base [Device]() class. Each Device has access to a set of global parameters that are stored within the Device as a dictionary. These are:
+Stretch Body is organized as a set of classes that extend the base [Device](https://github.com/hello-robot/stretch_body/blob/master/body/stretch_body/device.py#L27) class. Each Device has access to a set of global parameters that are stored within the Device as a dictionary. These are:
 
 * `device.params` : the parameters for the specific device
 * `device.robot_params`: global set of parameters
@@ -115,7 +115,7 @@ class Device:
 We can explore these parameters via iPython. 
 
 ```python
-import stretch_body.robot as robot
+In [1]: import stretch_body.robot as robot
 
 In [2]: r=robot.Robot()
 
@@ -164,8 +164,8 @@ Out[4]:
 All devices have access the global parameter set, `robot_params`. For example, the arm can access the lift parameters:
 
 ```python
-r.arm.robot_params['lift']
-Out[7]: 
+In [5]: r.arm.robot_params['lift']
+Out[5]: 
 {'belt_pitch_m': 0.005,
  'contact_thresh_N': [-72.45217552185059, 65.6581787109375],
  'contact_thresh_max_N': [-100, 100],
@@ -185,9 +185,14 @@ Out[7]:
 You can set any of the `robot_params` programmatically. For example to adjust the contact sensitivity for the arm:
 
 ```python
-In [9]: r.arm.params['contact_thresh_N']
-Out[9]: [-64.46241590881348, 66.51084520568847]
+In [6]: r.arm.params['contact_thresh_N']
+Out[6]: [-64.46241590881348, 66.51084520568847]
     
-In [10]: r.arm.params['contact_thresh_N']=[-80.0, 80.0]
+In [7]: r.arm.params['contact_thresh_N']=[-80.0, 80.0]
+
+In [8]: r.arm.params['contact_thresh_N']
+Out[8]: [-80.0, 80.0]
 ```
 
+------
+<div align="center"> All materials are Copyright 2020 by Hello Robot Inc. The Stretch RE1 robot has patents pending</div>
