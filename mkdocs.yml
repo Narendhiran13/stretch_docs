@@ -44,6 +44,7 @@ plugins:
             show_source: false
             members_order: source
             heading_level: 3
+            show_if_no_docstring: true
 
 extra:
   social:
