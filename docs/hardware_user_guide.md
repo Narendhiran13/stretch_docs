@@ -208,7 +208,10 @@ The nominal ‘zero’ position is of the head is shown below, along with the co
   </tr>
 </table>
 
+#### ReSpeaker Microphone Array
+The ReSPeaker has 12 RGB LEDs that can be controlled programatically. By default they display sound intensity and direction of the microphone array. The ReSpeaker has 4 mems microphones mounted on a 64.61mm circle at 45 degree spacing. The drawing below shows the position and orientation of the microphone array relative to the head pan axis.
 
+![image alt text](./images/stretch_head_respeaker.png)
 
 #### Runstop
 
