@@ -128,13 +128,13 @@ The method of SSH described in [SSH & X Server](#ssh-x-server) uses basic passwo
 The first step is to generate public and private keys on your computer. Linux and MacOS machines can simply open the terminal and run:
 
 ```console
-$ ssh-keygen
+$ ssh-keygen -t ed25519 -f <key_filepath_without_extension> -C "<some comment>"
 ```
 
 It will prompt you to enter a password. If you do, you'll need it to use the private key when you SSH into the robot. Next, we give the robot the public key. Linux and MacOS machines can run:
 
 ```console
-$ ssh-copy-id username@ip-address
+$ ssh-copy-id -i <key_filepath_without_extension> username@ip-address
 ```
 
 This requires you to know the username and ip-address of the robot. Instructions on how to find this information is found in the [SSH & X Server](#ssh-x-server) section. You may now SSH into the robot as normal, and no prompt for the robot's password will appear.
