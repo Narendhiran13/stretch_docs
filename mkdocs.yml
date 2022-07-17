@@ -7,6 +7,7 @@ use_directory_urls: True
 
 theme:
  name: material
+ font: Arial
  palette:
   - scheme: default
     primary: hello-robot-light
@@ -22,6 +23,8 @@ theme:
  favicon: images/hello_robot_favicon.png
  features:
   - navigation.instant
+  - navigation.tabs
+  - navigation.tabs.sticky
 extra_css:
   - extra.css
 
@@ -33,6 +36,13 @@ markdown_extensions:
   - admonition
 
 plugins:
+  - mike:
+      # these fields are all optional; the defaults are as below...
+      version_selector: true   # set to false to leave out the version selector
+      css_dir: css             # the directory to put the version selector's CSS
+      javascript_dir: js       # the directory to put the version selector's JS
+      canonical_version: null  # the version for <link rel="canonical">; `null`
+      # uses the version specified via `mike deploy`
   - search
   - mkdocstrings:
       default_handler: python
