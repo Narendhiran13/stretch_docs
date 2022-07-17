@@ -1,5 +1,5 @@
 site_name: Hello Robot Documentation
-site_url: https://dev-docs.hello-robot.com
+site_url: https://docs.hello-robot.com
 site_description: "Hello Robot User Documentation"
 copyright: 'Copyright &copy; 2022 Hello Robot Inc'
 site_author: Hello Robot Inc
@@ -36,6 +36,13 @@ markdown_extensions:
   - admonition
 
 plugins:
+  - mike:
+      # these fields are all optional; the defaults are as below...
+      version_selector: true   # set to false to leave out the version selector
+      css_dir: css             # the directory to put the version selector's CSS
+      javascript_dir: js       # the directory to put the version selector's JS
+      canonical_version: null  # the version for <link rel="canonical">; `null`
+      # uses the version specified via `mike deploy`
   - search
   - mkdocstrings:
       default_handler: python

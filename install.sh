@@ -9,7 +9,7 @@ pip3 install mkdocs-simple-plugin
 pip3 install install Pygments
 #pip3 install mkdocstrings
 pip3 install mkdocstrings-python-legacy
-
+pip3 install mike
 # #####################################
 #This repository generates the documentation hosted at [docs.hello-robot.com](docs.hello-robot.com).
 #The following command will serve the static website with hot-reloading (i.e. your edits are reflected in real time).
