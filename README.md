@@ -5,7 +5,7 @@ This repository generates the documentation hosted at [docs.hello-robot.com](htt
 ## Setup
 
 ```
-python3 -m pip install mkdocs mkdocs-material mkdocstrings==0.17.0 pytkdocs[numpy-style] jinja2=3.0.3
+python3 -m pip install mkdocs mkdocs-material mkdocstrings==0.17.0 pytkdocs[numpy-style] jinja2==3.0.3
 ```
 
 ## Development
